@@ -1,3 +1,4 @@
+import React from "react";
 import "./styles.scss";
 import Title from "./components/title";
 import Title2 from "./components/title2";
@@ -7,6 +8,7 @@ import Pickup from "./components/pickup";
 import Sns from "./components/sns";
 import Sidesns from "./components/sidesns";
 import Footer from "./components/footer";
+import Fetchapi from "./components/fetchapi";
 
 const App = () => {
   return (
@@ -39,6 +41,8 @@ const App = () => {
       <Sidesns />
 
       <Contents />
+
+      <Fetchapi />
 
       <Pickup />
 
