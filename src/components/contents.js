@@ -1,22 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaFacebookF, FaTwitter } from "react-icons/fa";
 
 const Contents = () => {
+  const [id, setId] = useState(1);
+  const [post, setPost] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    setLoading(true);
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${id}`
+    );
+    const item = await response.json();
+    setPost(item);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="contents">
       <ul className="ranking">
         <div className="rank_article_left">
-          <a href="https://youtu.be/upANnmMD_J8">
+          <a href="https://youtu.be/MmfUyyUL07A">
             <img src="https://wmg.jp/packages/21750/images/ssss.jpg" alt="" />
           </a>
         </div>
         <div className="rank_article_right">
           <h2>
-            <a href="https://youtu.be/upANnmMD_J8">恋のメガラバ</a>
+            <a href="https://youtu.be/MmfUyyUL07A">{post.title}</a>
           </h2>
-          <p>
-            コロナナモレモモ、1stシングルよりタイトル曲“恋のメガラバ”がTBS系「王様のブランチ」10月度エンディング・テーマに決定
-          </p>
+          {loading ? <p>loading...</p> : <p> {post.body}</p>}
           <div className="rank_article_bottom">
             <span className="date">2020年</span>
             <ul className="sharecontents">
@@ -55,9 +71,7 @@ const Contents = () => {
               What's Up, People?!
             </a>
           </h2>
-          <p>
-            <p>便利便利万歳 便利便利万歳 便利便利万歳 人間 便利便利...</p>
-          </p>
+          <p>便利便利万歳 便利便利万歳 便利便利万歳 人間 便利便利...</p>
           <div className="rank_article_bottom">
             <span className="date">2020年</span>
             <ul className="sharecontents">
@@ -94,9 +108,7 @@ const Contents = () => {
           <h2>
             <a href="https://youtu.be/MmfUyyUL07A">maximum the hormone</a>
           </h2>
-          <p>
-            <p>小さな君の手</p>
-          </p>
+          <p>小さな君の手</p>
           <div className="rank_article_bottom">
             <span className="date">2020年</span>
             <ul className="sharecontents">
@@ -136,10 +148,8 @@ const Contents = () => {
             </a>
           </h2>
           <p>
-            <p>
-              マキシマム ザ ホルモンが、新曲「maximum the hormone
-              II～これからの麺カタコッテリの話をしよう～」のミュージックビデオを公開した（https://youtu.be/IC-wDpwzEt4）。
-            </p>
+            マキシマム ザ ホルモンが、新曲「maximum the hormone
+            II～これからの麺カタコッテリの話をしよう～」のミュージックビデオを公開した（https://youtu.be/IC-wDpwzEt4）。
           </p>
           <div className="rank_article_bottom">
             <span className="date">2020年</span>
